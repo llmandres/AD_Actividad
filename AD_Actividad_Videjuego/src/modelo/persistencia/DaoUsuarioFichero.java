@@ -59,8 +59,8 @@ public class DaoUsuarioFichero {
 		
 		try(FileWriter fw = new FileWriter(NOMBRE_FICHERO,true);
 			BufferedWriter bw = new BufferedWriter(fw)){
-			bw.newLine();
 			bw.write(u.toString());
+			bw.newLine();
 		}catch(Exception e) {
 			throw e;
 		}
