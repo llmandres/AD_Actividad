@@ -7,6 +7,7 @@ public class Videojuego {
 	private int nota;
 	private String compania;
 	
+	
 	public Videojuego() {
 	}
 	
