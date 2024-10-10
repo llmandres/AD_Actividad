@@ -37,7 +37,7 @@ public class Videojuego {
 		if (getClass() != obj.getClass())
 			return false;
 		Videojuego other = (Videojuego) obj;
-		return Objects.equals(compania, other.compania) && Objects.equals(nombre, other.nombre) && nota == other.nota;
+		return Objects.equals(nombre, other.nombre);
 	}
 	@Override
 	public String toString() {
