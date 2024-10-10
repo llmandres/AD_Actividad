@@ -62,6 +62,10 @@ public class InterfazVideojuego {
 	/*
 	 * Aqui iria lo nuevo de videojuegos ahora
 	 */
+	/**
+	 * <b>mostrarInterfazVideojuego</b> Este método incicializa la interfaz mostrando por consola un Menú para poder
+	 * acceder en caso <b> 1 </b> menuVideojuego o <b> 2 </b> agregarVideojuego
+	 */
 	public void mostrarInterfazVideojuego() {
 		System.out.println("Bienvenido a la app");
 		Videojuego v = null;
