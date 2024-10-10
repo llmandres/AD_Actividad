@@ -1,5 +1,66 @@
 package modelo.persistencia;
 
-public class DaoVideojuego {
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
+import modelo.entidad.Videojuego;
+
+public class DaoVideojuego {
+	private static final String NOMBRE_FICHERO = "videojuegos.txt";
+	/**
+	 * Método que dado un videojuego por parámetro busca su coincidencia en el
+	 * fichero "videojuegos.txt" y en caso de que lo encuentre, lo devuelve junto
+	 * con su nota y su compañía
+	 * @param videojuego el videojuego a buscar en el fichero
+	 * @return videojuego en el caso de que esté en el fichero o null 
+	 * en caso contrario
+	 * @throws Excepcion en caso de que haya algún problema en el fichero de texto
+	 */
+
+	public Videojuego getByName (Videojuego videojuego) throws Exception {
+		try(FileReader fr = new FileReader(NOMBRE_FICHERO);
+				BufferedReader br = new BufferedReader(fr)){
+				String cadena = br.readLine();
+				while (cadena != null) {
+					String[] cadenaPartida = cadena.split("/");
+					String nombreVideojuego = cadenaPartida[0];
+					int notaVideojuego = Integer.parseInt(cadenaPartida[1]);
+					String companiaVideojuego = cadenaPartida[2];
+					if(videojuego.equals(nombreVideojuego)) {
+						videojuego = new Videojuego();
+						videojuego.setNombre(nombreVideojuego);
+						videojuego.setNota(notaVideojuego);
+						videojuego.setCompania(companiaVideojuego);
+						return videojuego;
+						}
+					cadena = br.readLine();
+					}
+					return null;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	/**
+	 * Método que dado un videojuego en el fichero "videojuegos.txt". Se añadirá
+	 * a la ultima línea. Se persistirá en formato "NOMBRE/NOTA/COMPAÑIA"
+	 * @param v es el videojuego que queremos persistir
+	 * @throws Exception en caso de que haya algún problema en el fichero de entrada salida
+	 */
+	public void register (Videojuego v) throws Exception{
+		File f = new File (NOMBRE_FICHERO);
+		if(!f.exists()) {
+			throw new Exception("fichero no existe");
+		}
+		try (FileWriter fw = new FileWriter(NOMBRE_FICHERO, true);
+				BufferedWriter bw = new BufferedWriter(fw)){
+			bw.newLine();
+			bw.write(v.toString());
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }
