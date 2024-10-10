@@ -32,6 +32,7 @@ public class GestorVideojuego {
 		} catch (Exception e) {
 			return 404;
 		}
+	}
 
 
 	/**
