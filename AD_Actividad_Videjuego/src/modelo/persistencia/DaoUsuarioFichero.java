@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import modelo.entidad.Usuario;
 
 public class DaoUsuarioFichero {
-	private static final String NOMBRE_FICHERO = "usuarios.dat";
+	private static final String NOMBRE_FICHERO = "usuarios.txt";
 	
 	/**
 	 * Método que dado un nombre pasado por parametro busca su coincidencia
