@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 import modelo.entidad.Videojuego;
 
@@ -64,4 +65,35 @@ public class DaoVideojuego {
 			throw e;
 		}
 	}
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+		public static ArrayList<Videojuego> listarVideojuego() throws Exception {
+			ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
+			
+			try(FileReader fr = new FileReader(NOMBRE_FICHERO);
+					BufferedReader br = new BufferedReader(fr)) {
+				String cadena = br.readLine();
+				
+				while (cadena != null) {
+	                
+	                String[] cadenaPartida = cadena.split("/");
+	                String nombreVideojuego = cadenaPartida[0];
+	                int notaVideojuego = Integer.parseInt(cadenaPartida[1]);
+	                String companiaVideojuego = cadenaPartida[2];
+	                
+	                Videojuego v = new Videojuego(nombreVideojuego, notaVideojuego, companiaVideojuego);
+	                
+	                listaVideojuegos.add(v);
+	                cadena = br.readLine();
+				}
+				
+			} catch (Exception e) {
+				throw e;
+			}
+			return listaVideojuegos;
+			
+		}
 }

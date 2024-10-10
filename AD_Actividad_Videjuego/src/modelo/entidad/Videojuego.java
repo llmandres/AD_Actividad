@@ -7,6 +7,12 @@ public class Videojuego {
 	private int nota;
 	private String compania;
 	
+	public Videojuego() {
+	}
+	
+	public Videojuego(String nombreVideojuego, int notaVideojuego, String companiaVideojuego) {
+		// TODO Auto-generated constructor stub
+	}
 	public String getNombre() {
 		return nombre;
 	}
