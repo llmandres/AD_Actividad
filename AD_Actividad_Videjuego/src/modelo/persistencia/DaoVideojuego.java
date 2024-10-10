@@ -70,7 +70,7 @@ public class DaoVideojuego {
 	 * @return
 	 * @throws Exception
 	 */
-		public static ArrayList<Videojuego> listarVideojuego() throws Exception {
+		public ArrayList<Videojuego> listarVideojuego() throws Exception {
 			ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
 			
 			try(FileReader fr = new FileReader(NOMBRE_FICHERO);
