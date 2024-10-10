@@ -6,6 +6,7 @@ public class Videojuego {
 	private String nombre;
 	private int nota;
 	private String compania;
+	
 	public String getNombre() {
 		return nombre;
 	}

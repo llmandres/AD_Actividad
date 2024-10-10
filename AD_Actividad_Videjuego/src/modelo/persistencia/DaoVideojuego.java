@@ -20,7 +20,8 @@ public class DaoVideojuego {
 	 * @throws Excepcion en caso de que haya algún problema en el fichero de texto
 	 */
 
-	public Videojuego getByName (Videojuego videojuego) throws Exception {
+	public Videojuego getByName (String videojuego) throws Exception {
+		Videojuego v = null;
 		try(FileReader fr = new FileReader(NOMBRE_FICHERO);
 				BufferedReader br = new BufferedReader(fr)){
 				String cadena = br.readLine();
@@ -30,11 +31,11 @@ public class DaoVideojuego {
 					int notaVideojuego = Integer.parseInt(cadenaPartida[1]);
 					String companiaVideojuego = cadenaPartida[2];
 					if(videojuego.equals(nombreVideojuego)) {
-						videojuego = new Videojuego();
-						videojuego.setNombre(nombreVideojuego);
-						videojuego.setNota(notaVideojuego);
-						videojuego.setCompania(companiaVideojuego);
-						return videojuego;
+						v = new Videojuego();
+						v.setNombre(nombreVideojuego);
+						v.setNota(notaVideojuego);
+						v.setCompania(companiaVideojuego);
+						return v;
 						}
 					cadena = br.readLine();
 					}
