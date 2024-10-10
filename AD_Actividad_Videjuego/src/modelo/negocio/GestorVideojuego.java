@@ -1,5 +1,8 @@
 package modelo.negocio;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import modelo.entidad.Videojuego;
 import modelo.persistencia.DaoVideojuego;
 
@@ -67,6 +70,19 @@ public class GestorVideojuego {
 		} catch (Exception e) {
 			return 404;
 		}
+	}
+	
+	public ArrayList<Videojuego> listarVideojuego(ArrayList<Videojuego> v){
+		dv = new DaoVideojuego();
+		ArrayList<Videojuego> listaVideojuegos= null;
+		try {
+			listaVideojuegos = dv.listarVideojuego();
+			return listaVideojuegos;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return listaVideojuegos;
 	}
 
 }
