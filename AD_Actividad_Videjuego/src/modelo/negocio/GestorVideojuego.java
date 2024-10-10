@@ -72,7 +72,7 @@ public class GestorVideojuego {
 		}
 	}
 	
-	public ArrayList<Videojuego> listarVideojuego(ArrayList<Videojuego> v){
+	public ArrayList<Videojuego> listarVideojuego(){
 		dv = new DaoVideojuego();
 		ArrayList<Videojuego> listaVideojuegos= null;
 		try {
