@@ -63,8 +63,8 @@ public class InterfazVideojuego {
 	 * Aqui iria lo nuevo de videojuegos ahora
 	 */
 	/**
-	 * <b>mostrarInterfazVideojuego</b> Este método incicializa la interfaz mostrando por consola un Menú para poder
-	 * acceder en caso <b> 1 </b> menuVideojuego o <b> 2 </b> agregarVideojuego
+	 * <b>mostrarInterfazVideojuego</b> Este método incicializa la interfaz mostrando por consola un Menú interactivo para el usuario para poder
+	 * acceder en caso <b> 1 </b> agregar un videojuego o en caso <b> 2 </b> listar un videojuego
 	 */
 	public void mostrarInterfazVideojuego() {
 		System.out.println("Bienvenido a la app");
@@ -102,7 +102,14 @@ public class InterfazVideojuego {
 
 		System.out.println("Fin de la aplicación");
 	}
-
+	/**
+	 * Este método pide los datos del videojuego y muestra por pantalla según los datos introducidos:
+	 * <b> 1 </b> "Nombre en blanco o solo espacios en blanco"
+	 * <b> 2 </b>  "Compaía en blanco o cono solo espacios en blanco"
+	 * <b> 3 </b>  "Videojuego guardado"
+	 * <b> 4 </b> "La nota no esta en el rango correcto"
+	 * <b> 404 </b> "Error. Intentelo mas tarde. Codigo 404"
+	 */
 	private void agregarVideojuego() {
 		Videojuego v = pedirDatosVideojuego();
 		int respuesta = gv.guardar(v);
@@ -128,7 +135,10 @@ public class InterfazVideojuego {
 	private void listarVideojuegos() {
 		 listarVideojuegos();
 }
-
+	/**
+	 * Método que pide los datos del Videojuego al usuario (nombre,compañia y nota) para después crearlo
+	 * @return v , referencia del Videojuego creado
+	 */
 	private Videojuego pedirDatosVideojuego() {
 		System.out.println("Introduzca el nombre del videojuego: ");
 		String nombre = scString.nextLine();
@@ -142,7 +152,13 @@ public class InterfazVideojuego {
 		v.setNota(nota);
 		return v;
 	}
-
+	/**
+	 * Metodo interactivo que muestra al usuario un Menú con 3 opciones
+	 * <b>1</b> Agregar un videojuego
+	 * <b>2</b> Mostrar el listado de los videojuegos existentes
+	 * <b>0</b> Salir de la Sesión y así poder volver a la interfaz inicial
+	 * @return opcion , la opcion elegida por el usuario
+	 */
 	private int menuVideojuego() {
 		boolean correcto = false;
 		int opcion = 0;
@@ -159,7 +175,14 @@ public class InterfazVideojuego {
 		}
 		return opcion;
 	}
-
+	
+	/**
+	 * Metodo que da de alta a un usuario mostrando los siguientes posibles casos:
+	 * <b>1</b> "Usuario en blanco o con solo espacios en blanco"
+	 * <b>2</b> "Password en blanco o con solo espacios en blanco"
+	 * <b>3</b> "Usuario guardado con exito!! :) :)"
+	 * <b>666</b> "Error de acceso. Intentelo mas tarde. Codigo 666"
+	 */
 	private void darAltaUsuario() {
 		Usuario usuario = pedirDatos();
 		int respuesta = gu.guardar(usuario);
@@ -178,7 +201,15 @@ public class InterfazVideojuego {
 			break;
 		}
 	}
-
+	
+	
+	/**
+	 * Metodo que muestra el menu inicial de la interfaz con tres posibles casos
+	 * <b>1</b> Login
+	 * <b>2</b> Register
+	 * <b>0</b> 
+	 * @return
+	 */
 	private int menu() {
 		boolean correcto = false;
 		int opcion = 0;
