@@ -41,7 +41,7 @@ public class Videojuego {
 	}
 	@Override
 	public String toString() {
-		return "Videojuego [nombre=" + nombre + ", nota=" + nota + ", compania=" + compania + "]";
+		return nombre + "/" + nota + "/" + compania;
 	}
 	
 	
