@@ -73,16 +73,14 @@ public class GestorVideojuego {
 	}
 	
 	public ArrayList<Videojuego> listarVideojuego(){
-		dv = new DaoVideojuego();
-		ArrayList<Videojuego> listaVideojuegos = null;
-		try {
-			listaVideojuegos = dv.listarVideojuego();
-			return listaVideojuegos;
-		} catch (Exception e) {
-
-			e.printStackTrace();
+			dv = new DaoVideojuego();  
+		    ArrayList<Videojuego> listaVideojuegos = null;
+		    try {
+		        listaVideojuegos = dv.listarVideojuego();
+		    } catch (Exception e) {
+		        e.printStackTrace();  
+		    }
+		    return listaVideojuegos;  
 		}
-		return listaVideojuegos;
-	}
 
 }
