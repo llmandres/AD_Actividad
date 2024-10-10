@@ -126,8 +126,8 @@ public class InterfazVideojuego {
 		case 4:
 			System.out.println("La nota no esta en el rango correcto");
 			break;
-		case 404:
-			System.out.println("Error. Intentelo mas tarde. Codigo 404");
+		case 500:
+			System.out.println("Error. Intentelo mas tarde. Codigo 500");
 			break;
 		}
 	}
