@@ -14,6 +14,7 @@ public class InterfazVideojuego {
 	private Scanner scString = new Scanner(System.in);
 	private Scanner sc = new Scanner(System.in);
 
+	
 	public void mostrarInterfaz() {
 		System.out.println("Bienvenido a la app");
 		Usuario usuario = null;
@@ -120,16 +121,9 @@ public class InterfazVideojuego {
 		}
 	}
 
-	private ArrayList<Videojuego> listarVideojuegos() {
-		ArrayList<Videojuego> videojuego = listarVideojuegos();
-		
-			
-		for(Videojuego v : videojuego) {
-			System.out.println(v);
-		}
-		return videojuego;
-		
-	}
+	private void listarVideojuegos() {
+		 listarVideojuegos();
+}
 
 	private Videojuego pedirDatosVideojuego() {
 		System.out.println("Introduzca el nombre del videojuego: ");
