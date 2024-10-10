@@ -74,7 +74,7 @@ public class GestorVideojuego {
 	
 	public ArrayList<Videojuego> listarVideojuego() throws Exception{
 			dv = new DaoVideojuego();  
-		    ArrayList<Videojuego> listaVideojuegos = null;
+		    ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
 		    listaVideojuegos = dv.listarVideojuego();
 		    return listaVideojuegos;  
 		}
