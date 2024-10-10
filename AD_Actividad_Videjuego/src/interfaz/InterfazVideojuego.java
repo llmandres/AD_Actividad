@@ -86,7 +86,13 @@ public class InterfazVideojuego {
 				romper = false;
 			}
 				break;
+			case 3: {
+				borrarVideojuego();
+				romper = false;
+			}
+				break;
 			case 0: {
+				romper = true;
 				break;
 			}
 
@@ -97,6 +103,11 @@ public class InterfazVideojuego {
 		} while (opcion != 0 || !romper);
 
 		System.out.println("Fin de la aplicación");
+	}
+	private void borrarVideojuego() {
+		System.out.println("Que juego quieres borrar?");
+		String nombreJuego = scString.nextLine();
+		gv.eliminarVideojuego(nombreJuego);
 	}
 
 	private void agregarVideojuego() {
@@ -122,7 +133,15 @@ public class InterfazVideojuego {
 	}
 
 	private void listarVideojuegos() {
-		 listarVideojuegos();
+		    try {
+				for(Videojuego v : gv.listarVideojuego()) {
+					System.out.println(v);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 }
 
 	private Videojuego pedirDatosVideojuego() {
@@ -146,7 +165,7 @@ public class InterfazVideojuego {
 			System.out.println("Elija una opción: ");
 			System.out.println("1 - Agregar Videojuego");
 			System.out.println("2 - Listado de videojuegos");
-			//System.out.println("3 - Borrar videojuego");
+			System.out.println("3 - Borrar videojuego");
 			System.out.println("0 - Cerrar Sesión");
 			opcion = sc.nextInt();
 			if (opcion >= 0 && opcion <= 3) {
@@ -167,7 +186,7 @@ public class InterfazVideojuego {
 			System.out.println("Password en blanco o con solo espacios en blanco");
 			break;
 		case 3:
-			System.out.println("Usuario guardado con exito!! :) :)");
+			System.out.println("Usuario guardado con exito)");
 			break;
 		case 666:
 			System.out.println("Error de acceso. Intentelo mas tarde. Codigo 666");

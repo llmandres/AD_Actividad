@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import modelo.entidad.Videojuego;
@@ -70,30 +71,73 @@ public class DaoVideojuego {
 	 * @return
 	 * @throws Exception
 	 */
-		public ArrayList<Videojuego> listarVideojuego() throws Exception {
-			ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
-			
-			try(FileReader fr = new FileReader(NOMBRE_FICHERO);
-					BufferedReader br = new BufferedReader(fr)) {
-				String cadena = br.readLine();
-				
-				while (cadena != null) {
-	                
-	                String[] cadenaPartida = cadena.split("/");
-	                String nombreVideojuego = cadenaPartida[0];
-	                int notaVideojuego = Integer.parseInt(cadenaPartida[1]);
-	                String companiaVideojuego = cadenaPartida[2];
-	                
-	                Videojuego v = new Videojuego(nombreVideojuego, notaVideojuego, companiaVideojuego);
-	                
-	                listaVideojuegos.add(v);
-	                cadena = br.readLine();
-				}
-				
-			} catch (Exception e) {
-				throw e;
-			}
-			return listaVideojuegos;
-			
-		}
+	public ArrayList<Videojuego> listarVideojuego() throws Exception {
+	    ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
+
+	    try (FileReader fr = new FileReader(NOMBRE_FICHERO);
+	         BufferedReader br = new BufferedReader(fr)) {
+	        
+	        String cadena;
+	        while ((cadena = br.readLine()) != null) {
+	            String[] cadenaPartida = cadena.split("/");
+	            if (cadenaPartida.length < 3) {
+	 
+	                continue; 
+	            }
+
+	            String nombreVideojuego = cadenaPartida[0];
+	            int notaVideojuego;
+	            
+
+	            try {
+	                notaVideojuego = Integer.parseInt(cadenaPartida[1]);
+	            } catch (NumberFormatException e) {
+	                continue;
+	            }
+	            
+	            String companiaVideojuego = cadenaPartida[2];
+
+	            Videojuego v = new Videojuego(nombreVideojuego, notaVideojuego, companiaVideojuego);
+	            listaVideojuegos.add(v);
+	        }
+
+	    } catch (Exception e) {
+	        throw e; 
+	    }
+	    return listaVideojuegos;
+	}
+	
+
+
+
+	    public void eliminarVideojuego(String nombreVideojuego) throws IOException {
+	        ArrayList<String> lineas = new ArrayList<>(); // Para almacenar las líneas del fichero
+	        boolean encontrado = false;
+
+	        // Leer el contenido actual del fichero
+	        try (BufferedReader br = new BufferedReader(new FileReader(NOMBRE_FICHERO))) {
+	            String linea;
+	            while ((linea = br.readLine()) != null) {
+	                // Verificar si la línea corresponde al videojuego que se quiere eliminar
+	                if (linea.startsWith(nombreVideojuego.toLowerCase() + "/")) {
+	                    encontrado = true; // Marcamos que encontramos el videojuego
+	                    continue; // No añadimos esta línea a la lista
+	                }
+	                lineas.add(linea); // Añadir la línea a la lista
+	            }
+	        }
+
+	        // Si el videojuego fue encontrado, sobrescribimos el archivo
+	        if (encontrado) {
+	            try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOMBRE_FICHERO))) {
+	                for (String l : lineas) {
+	                    writer.write(l);
+	                    writer.newLine(); // Añadir nueva línea
+	                }
+	            }
+	            System.out.println("Videojuego '" + nombreVideojuego + "' eliminado.");
+	        } else {
+	            System.out.println("Videojuego no encontrado: " + nombreVideojuego);
+	        }
+	    }
 }

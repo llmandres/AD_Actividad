@@ -12,7 +12,9 @@ public class Videojuego {
 	}
 	
 	public Videojuego(String nombreVideojuego, int notaVideojuego, String companiaVideojuego) {
-		// TODO Auto-generated constructor stub
+		this.nombre = nombreVideojuego;
+		this.nota = notaVideojuego;
+		this.compania = companiaVideojuego;
 	}
 	public String getNombre() {
 		return nombre;
@@ -49,6 +51,6 @@ public class Videojuego {
 	}
 	@Override
 	public String toString() {
-		return nombre + "/" + nota + "/" + compania;
+		return nombre.toLowerCase() + "/" + nota + "/" + compania;
 	}
 }

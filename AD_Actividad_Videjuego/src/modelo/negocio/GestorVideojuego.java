@@ -1,5 +1,6 @@
 package modelo.negocio;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -72,17 +73,22 @@ public class GestorVideojuego {
 		}
 	}
 	
+	public ArrayList<Videojuego> listarVideojuego() throws Exception{
+				dv = new DaoVideojuego();  
 
-	
-
-	public void listarVideojuego() throws Exception{
-			dv = new DaoVideojuego();  
-		    ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
-
-		    listaVideojuegos = dv.listarVideojuego();
-		    for(Videojuego v :listaVideojuegos) {
-		    	System.out.println(v);
-		    }
+			return dv.listarVideojuego();
 		}
+	
+	
+	public void eliminarVideojuego(String v) {
+		dv = new DaoVideojuego();
+		try {
+			dv.eliminarVideojuego(v);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }

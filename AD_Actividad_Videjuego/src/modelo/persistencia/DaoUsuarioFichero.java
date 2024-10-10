@@ -54,7 +54,7 @@ public class DaoUsuarioFichero {
 	public void registrar(Usuario u) throws Exception{
 		File f = new File(NOMBRE_FICHERO);
 		if(!f.exists()) {
-			throw new Exception("Fichero NO existe! :(");
+			throw new Exception("Fichero no existe");
 		}
 		
 		try(FileWriter fw = new FileWriter(NOMBRE_FICHERO,true);
